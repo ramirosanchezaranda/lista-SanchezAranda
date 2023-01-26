@@ -1,0 +1,37 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+          <span class="h3" *ngIf="STUDENTS?.length === 0">Listado de Estudiantes</span>
+          <button class="btn btn-dark btn-lg float-end" routerLink="/create-empleado">Agregar</button>
+          <h5 style="margin-top: 30px;">No hay datos para mostar</h5>
+            <table class="table table-striped table-hove mt-5">
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Documento</th>
+                    <th>Comision</th>
+                    <th>Avance</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let student of STUDENTS">
+                    <td>{{student.name}}</td>
+                    <td>{{student.lastName}}</td>
+                    <td>{{student.document}}</td>
+                    <td>{{student.commission}}</td>
+                    <td>
+                      <span *ngIf="student.advance < 60" [ngClass] = "student.advance < 50 ? 'text-danger' : 'text-warning'">{{student.advance}}</span>
+                        <span *ngIf="student.advance >= 60" class="text-success">{{student.advance}}</span>
+                    </td>
+                    <td>
+                      <button class="btn btn-dark btn-sm me-2" >Editar</button>
+                    </td>
+                  </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
